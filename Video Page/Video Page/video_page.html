@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Course Video Page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- <script src="https://kit.fontawesome.com/33c24d814a.js" crossorigin="anonymous"></script> -->
+	<link rel="stylesheet" type="text/css" href="C:\new\fontawesome-free-5.12.0-web\css\all.css">
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			font-family: sans-serif;
+		}
+		body{
+			background: #303030;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+		}
+		.container{
+			width: 90%;
+			min-height: 95vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: #333;
+			box-shadow: 1px 1px 5px #000;
+		}
+		.container .video{
+			position: relative;
+			margin: 20px;	
+			width: 800px;
+			height: 500px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.container .video .title{
+			color: #eee;
+			font-weight: bold;
+			font-size: 30px;
+			margin:10px 0;
+			text-align: center;
+		}
+		.container video{
+			position: relative;
+			border-radius: 10px;
+			width: 780px;
+			height: 440px;
+			outline: none;
+			box-sizing: border-box;
+			box-shadow: 3px 3px 10px #777;
+			margin: 0 10px;
+		}
+		.ic{
+			position: fixed;
+			right: 1%;
+			top: 35%;
+			font-size: 200px;
+			color: rgba(150,150,150,0.2);
+			padding: 0 4%;
+			cursor: pointer;
+			visibility: hidden;
+			z-index: 1000;
+		}
+		.ic:hover{
+			background: rgba(150,150,150,0.1);
+		}
+		.container .multi-videos{
+			width: 370px;
+			height: 300px;
+			margin: 15px;	
+			position: absolute;
+			visibility: hidden;
+			overflow-y: auto;
+			overflow-x: auto;
+			background: #333;
+		}
+		.box{
+			width: 350px;
+			display: flex;
+			background: #444;
+			cursor: pointer;
+			border: 1px solid #333;
+		}
+		.box:hover{
+			background: rgba(150,150,150,0.4);
+		}
+		.box div{
+			margin: 10px;
+		}
+		.box .img{
+			width: 70px;
+			height: 40px;
+		}
+		.box .img img{
+			width: 100%;
+			height: 100%;
+		}
+		.box .name,.box .duration{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.fa-play-circle{
+			color: #fff;
+			transform: translateX(-50%);
+			text-shadow: 1px 1px 4px #000;
+		}
+		@media(max-width: 850px){
+			.container{
+				flex-direction: column;
+			}
+			.container .video{
+				width: 500px;
+				height: 400px;
+			}			
+			.container .video video{
+				width: 480px;
+				height: 270px;
+			}
+			.ic{
+				font-size: 50px;
+				padding: 2% 4%;
+			}
+			.container .multi-videos{
+				width: 370px;
+				height: 380px;
+			}
+		}
+		@media(max-width: 450px){
+			.container{
+				flex-direction: column;
+			}
+			.container .video{
+				width: 350px;
+				height: 210px;
+			}			
+			.container .video video{
+				width: 330px;
+				height: 185px;
+			}
+			.ic{
+				font-size: 50px;
+				padding: 2% 4%;
+			}
+			.container .multi-videos{
+				width: 340px;
+				height: 380px;
+				overflow-y: auto;
+			}
+			.container .multi-videos .box{
+				width: 320px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="video">
+			<div class="title">Python Course Part 1</div>
+			<video controls="" id="vid" src="Python_01.mp4" type="video/mp4" poster="python.jpeg">
+			</video>
+			
+		</div>
+		<div class="multi-videos">
+			<div class="box" id="0">
+				<div class="img"><img src="python.jpeg"></div>
+				<div class="name">Python Course Part 1</div>
+				<div class="duration">04.12</div>
+			</div>
+			<div class="box" id="1">
+				<div class="img"><img src="python.jpeg"></div>
+				<div class="name">Python Course Part 2</div>
+				<div class="duration">03.50</div>
+			</div>
+			<div class="box" id="2">
+				<div class="img"><img src="python.jpeg"></div>
+				<div class="name">Python Course Part 3</div>
+				<div class="duration">04.22</div>
+			</div>
+			<div class="box" id="3">
+				<div class="img"><img src="python.jpeg"></div>
+				<div class="name">Python Course Part 4</div>
+				<div class="duration">04.12</div>
+			</div>
+			<div class="box" id="4">
+				<div class="img"><img src="python.jpeg"></div>
+				<div class="name">Python Course Part 5</div>
+				<div class="duration">03.50</div>
+			</div>
+			<div class="box" id="5">
+				<div class="img"><img src="python.jpeg"></div>
+				<div class="name">Python Course Part 6</div>
+				<div class="duration">04.22</div>
+			</div>
+		</div>
+	</div>
+	<div class="ic"><i class="fa fa-angle-left"></i></div>
+</body>
+<script type="text/javascript">
+	var video=document.querySelector('.video');
+	var title=document.querySelector('.video .title');
+	var multiVid=document.querySelector('.multi-videos');
+	var vid=document.querySelector('#vid');
+	var ic=document.querySelector('.ic');
+	var box=document.querySelectorAll('.box');
+	var name1=document.querySelectorAll('.box .name');
+	var var1=0;
+	var videoList=['Python_01.mp4','Python_02.mp4','Python_03.mp4'];
+	
+	window.onload=function(){	
+		setTimeout(function(){
+			ic.style.visibility="visible";
+		},3000);
+	}
+	var width1=window.matchMedia("(min-width: 850px)");
+	var width2=window.matchMedia("(min-width: 600px)");
+	ic.addEventListener('click',function(){
+		if(var1==0){
+			if(width1.matches){
+				video.style.width="500px";
+				video.style.height="400px";
+				vid.style.width="490px";
+				vid.style.height="275px";
+				ic.style.fontSize="100px";
+			}
+			multiVid.style.position="relative";
+			multiVid.style.visibility="visible";
+			var1=1;	
+			ic.innerHTML="<i class='fa fa-angle-right'></i>";
+		}
+		else{
+			if(width1.matches){
+				video.style.width="800px";
+				video.style.height="500px";
+				vid.style.width="780px";
+				vid.style.height="440px";
+				ic.style.fontSize="200px";
+			}
+			multiVid.style.position="absolute";
+			multiVid.style.visibility="hidden";
+			var1=0;
+			ic.innerHTML="<i class='fa fa-angle-left'></i>";
+		}
+	})
+	
+	box[0].style.background="rgb(200, 200, 200)";
+	var nameInsert = name1[0].textContent;
+	name1[0].innerHTML="<i class='fa fa-play-circle'></i>"+nameInsert;
+	for(var i=0;i<box.length;i++){		
+		box[i].addEventListener('click',function(){	
+			for(var k=0;k<box.length;k++){
+				if(box[k].style.background=="rgb(200, 200, 200)"){
+					box[k].style.background="rgb(63, 63, 63)";
+					name1[box[k].id].innerText=nameInsert;
+				}
+			}
+			vid.setAttribute('src',videoList[this.id%videoList.length]);
+			this.style.background="rgb(200, 200, 200)";
+			title.innerText=name1[this.id].innerText;
+			nameInsert=name1[this.id].textContent;
+			name1[this.id].innerHTML="<i class='fa fa-play-circle'></i>"+nameInsert;
+		})
+	}
+</script>
+</html>
